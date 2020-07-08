@@ -27,11 +27,18 @@
 请简述 patchVnode 函数的执行过程。
 
   1.先触发perpatch钩子函数和update钩子函数
+
   2.然后触发postpatch钩子函数
+
   3.开始做判断：
+
     ①如果新节点有text属性，且不等于老节点的text属性，继续判断如果老节点有children，那么就移除老节点的children的对应的DOM元素，后设置新节点的对应的DOM元素的textContent
+
     ②如果新老节点都有children，而且不相等时，那么就调用updateChildren()，去对比子节点，并且更新子节点的差异
+
     ③如果只是新节点有children属性，现在判断老节点有无text属性，如果有就清空对应的DOM元素的textContent,再添加所有的子节点
+
     ④如果只是老节点有children属性，那就移除所有的老节点
+    
     ⑤如果只是老节点有text属性，就清空对应的DOM元素的textContent
     
