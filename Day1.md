@@ -1,5 +1,6 @@
 选择题：
 1、下面关于虚拟 DOM 的说法正确的是：（A B C D）
+
     A. 使用虚拟 DOM 不需要手动操作 DOM，可以极大的提高程序的性能。
 
     B. 使用虚拟 DOM 不需要手动操作 DOM，可以极大的提高开发效率。
@@ -11,6 +12,7 @@
 
 
 2、下面关于 Snabbdom 库的描述错误的是：（D）
+
     A. Snabbdom 库是一个高效的虚拟 DOM 库，Vue.js 的虚拟 DOM 借鉴了 Snabbdom 库。
 
     B. 使用 h() 函数创建 VNode 对象，描述真实 DOM 结构。
@@ -23,6 +25,7 @@
 
 简答题：
 请简述 patchVnode 函数的执行过程。
+
   1.先触发perpatch钩子函数和update钩子函数
   2.然后触发postpatch钩子函数
   3.开始做判断：
