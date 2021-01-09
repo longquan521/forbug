@@ -1,0 +1,50 @@
+#app {
+  font-family: "微软雅黑";
+  width: 100%;
+  padding: 30% 0 0 0;
+  box-sizing: border-box;
+}
+
+.topimg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(40, 255, 31);
+}
+
+.topimg img {
+  width: 1.5rem;
+}
+
+.topimg p {
+  font-size: 0.18rem;
+  margin-top: 0.15rem;
+  font-weight: bold;
+}
+
+#centertime {
+  color: rgb(40, 255, 31);
+  font-size: 0.3rem;
+  text-align: center;
+  margin-top: 0.1rem;
+}
+
+.lastcontent {
+  padding: 0 9%;
+  display: flex;
+  font-size: 0.16rem;
+  font-weight: bold;
+  margin-top: 0.15rem;
+}
+
+.lastcontent p {
+  line-height: 2;
+}
+
+.lastcontent .line2 {
+  margin-left: 8%;
+}
+
+.lastcontent .line2 p:not(:first-child) {
+  font-weight: normal;
+}
