@@ -2,56 +2,123 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>校内人员电子通行证</title>
   <link rel="stylesheet" href="./css/normalize.css">
-  <link rel="stylesheet" href="./css/index.css">
+
+  <title>玲龙菜谱</title>
+
 </head>
+<script src="./js/menu.js"></script>
+<script src="./js/vue3.js"></script>
+<script src="./js/rem.js"></script>
 
 <body>
   <div id="app">
-    <div class="topimg">
-      <img src="./img/IMG_0130.PNG" alt="">
-      <p>进校验证通过</p>
-    </div>
-    <div id="centertime"></div>
-    <div class="lastcontent">
-      <div class="line1">
-        <p>姓名:</p>
-        <p>健康码:</p>
-        <p>单位/学院:</p>
-        <p>通行区域:</p>
+    <div class="menu-title">玲龙菜单</div>
+    <div class="menu-content">
+      <div class="content-sidebar">
+        <div class="side-wrap">
+          <div class="side-item" v-for="item in menuList" :key="item.menuType"
+            :class="{'side-item-active':activeMenu===item.menuType}" @click="clickItem(item)">{{item.typeValue}}</div>
+        </div>
       </div>
-      <div class="line2">
-        <p>齐昊</p>
-        <p>绿码</p>
-        <p>马克思主义学院</p>
-        <p>本部</p>
+      <div class="content-info">
+        <div class="content-wrap">
+          <div class="content-item" v-for="item in menuTypeInfoList" :key="item.value">{{item.name || '--'}}</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-  <script src="./js/rem.js"></script>
-  <script src="./js/index.js"></script>
-  <script>
-    // var app = new Vue({
-    //   el: "#app",
-    //   data: {
-    //     message: "Hello Vue!",
-    //     somemsg: [
-    //       { name: "小明", age: Math.floor(Math.random() * 20 + 10) },
-    //       { name: "大明", age: Math.floor(Math.random() * 20 + 10) },
-    //       { name: "小花", age: Math.floor(Math.random() * 20 + 10) },
-    //       { name: "小红", age: Math.floor(Math.random() * 20 + 10) },
-    //       { name: "小黑", age: Math.floor(Math.random() * 20 + 10) },
-    //     ],
-    //   },
-    // });
-  </script>
+  </div>
 </body>
+<script>
+  // import menuList from './js/menu.js'
+  const { createApp, ref } = Vue;
+  createApp({
+    setup() {
+      const activeMenu = ref(1);
+      const menuTypeInfoList = ref([])
+      const menuList = ref(menuListData)
+      const clickItem = (item) => {
+        console.log('item:', item)
+        activeMenu.value = item.menuType;
+        menuTypeInfoList.value = item.typeList;
+      }
+      return {
+        activeMenu, clickItem, menuList, menuTypeInfoList
+      }
+    }
+  }).mount('#app')
+</script>
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .menu-title {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .menu-content {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    width: 100%;
+    padding: 16px 0;
+  }
+
+  .menu-content .content-sidebar {
+    width: 30%;
+    flex-shrink: 0;
+    overflow: auto;
+    border: 1px solid;
+    border-radius: 4px;
+  }
+
+  .content-sidebar .side-wrap {
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .side-wrap .side-item {
+    padding: 4px 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .side-wrap .side-item-active {
+    background: skyblue;
+    border-radius: 4px;
+  }
+
+  .menu-content .content-info {
+    flex: 1;
+    padding: 12px;
+    overflow: auto;
+  }
+
+  .menu-content .content-info .content-wrap {
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: 12px;
+  }
+
+  .content-info .content-wrap .content-item {
+    padding: 8px 0;
+  }
+</style>
 
 </html>
